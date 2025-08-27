@@ -17,14 +17,17 @@ const styles = StyleSheet.create({
   imputSearch: {
     color: 'black',
     width: '100%',
-    paddingLeft: 5,
-    borderRadius: 20,
+    paddingLeft: 15,
+    borderRadius: 15,
   },
   viewSearch: {
     backgroundColor: 'white',
     width: '90%',
-    borderRadius: 20,
+    height: 35,
+    borderRadius: 15,
     marginTop: 10,
+    paddingRight: 15,
+    flexDirection: 'row', // Adicione esta linha
   }
 
 })

@@ -31,7 +31,7 @@ export default function Cabecalho({ onSearch }) {
           onChangeText={setBusca}
         />
         <TouchableOpacity onPress={handleSearch}>
-          <FontAwesome name="search" size={24} color="black" />
+          <FontAwesome style={{ margin: 10 }} name="search" size={15} color="black" />
         </TouchableOpacity>
       </View>
     </>
