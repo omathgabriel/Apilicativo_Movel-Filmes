@@ -1,12 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image, FlatList, ScrollView } from 'react-native';
 import Cabecalho from '../../cabecalho';
 import CardMovies from '../../cardFilmes';
-import { useState, useEffect } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Home() {
   const [popularMovies, setPopularMovies] = useState([]);
   const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
+  const navigation = useNavigation();
 
   const BASE_IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
 
@@ -36,16 +37,27 @@ export default function Home() {
     fetchMovies();
   }, []);
 
+  function handleSearch(texto) {
+    navigation.navigate('PesquisaFilmes', { termo: texto });
+  }
+
+  function handleDetalheFilme(item) {
+    navigation.navigate('Detalhes', {
+      imagem: item.poster_path,
+      titulo: item.title,
+      nota: item.vote_average,
+      descricao: item.overview
+    });
+  }
+
   return (
     <ScrollView style={styles.scrollContainer}>
       <View style={styles.container}>
-        <Cabecalho />
+        <Cabecalho onSearch={handleSearch} />
 
-        {/* BANNER */}
         <Text style={styles.textBanner}>Em Cartaz</Text>
         <Image style={styles.imageBanner} source={require('../../../../assets/CINEMA.png')} />
 
-        {/* LISTA DE FILMES EM CARTAZ */}
         <View style={styles.movieSection}>
           <Text style={styles.textCategoria}>Filmes em Cartaz:</Text>
           <FlatList
@@ -53,10 +65,11 @@ export default function Home() {
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
               <CardMovies
-                imagem={`${BASE_IMAGE_URL}${item.poster_path}`}
+                imagem={item.poster_path}
                 titulo={item.title}
                 nota={item.vote_average}
                 descricao={item.overview}
+                onPress={() => handleDetalheFilme(item)}
               />
             )}
             horizontal={true}
@@ -64,7 +77,6 @@ export default function Home() {
           />
         </View>
 
-        {/* LISTA DE FILMES POPULARES */}
         <View style={styles.movieSection}>
           <Text style={styles.textCategoria}>Filmes Mais Populares:</Text>
           <FlatList
@@ -72,10 +84,11 @@ export default function Home() {
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
               <CardMovies
-                imagem={`${BASE_IMAGE_URL}${item.poster_path}`}
+                imagem={item.poster_path}
                 titulo={item.title}
                 nota={item.vote_average}
                 descricao={item.overview}
+                onPress={() => handleDetalheFilme(item)}
               />
             )}
             horizontal={true}

@@ -1,7 +1,11 @@
-import Rotas from './src/rotas/index'
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import StackRoutes from './src/rotas/stacksRoute';
 
-export default function App(){
+export default function App() {
   return (
-    <Rotas></Rotas>
+    <NavigationContainer>
+      <StackRoutes />
+    </NavigationContainer>
   );
 }
