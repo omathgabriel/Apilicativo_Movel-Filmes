@@ -1,4 +1,4 @@
-import { Image, View,TouchableOpacity,Image } from 'react-native';
+import { View,TouchableOpacity,Image } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import styles from './estilo.js';
 import FontAwesome from '@expo/vector-icons/FontAwesome';

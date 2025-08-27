@@ -39,9 +39,6 @@ export default function Home() {
   return (
     <ScrollView style={styles.scrollContainer}>
       <View style={styles.container}>
-      <NavigationContainer>
-      <StackRoutes />
-    </NavigationContainer>
         <Cabecalho />
 
         {/* BANNER */}

@@ -1,3 +1,4 @@
+
 import { Text, View, TextInput, TouchableOpacity } from "react-native";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import styles from "./estilo2.js";
