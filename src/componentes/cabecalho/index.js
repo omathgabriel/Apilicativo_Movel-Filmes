@@ -1,6 +1,7 @@
-import { Image, View,TouchableOpacity } from 'react-native';
+import { Image, View,TouchableOpacity,Image } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import styles from './estilo.js';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { TextInput } from 'react-native-web';
 
 export default function Cabecalho() {
@@ -14,7 +15,10 @@ export default function Cabecalho() {
           </View>
       
           <View style={styles.viewSearch}>
-            <TextInput style={styles.imputSearch} placeholder='Digite o que deseja buscar' />
+            <TextInput style={styles.imputSearch} placeholder='Digitee o que deseja buscar' />
+            <TouchableOpacity>
+             <FontAwesome name="search" size={24} color="black"/>
+           </TouchableOpacity>
           </View>
         </>
       );
